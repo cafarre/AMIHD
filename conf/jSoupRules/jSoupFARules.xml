@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- TODO - try to get rid of the 'xxx cases made.' at the end of the description. -->
+
+<jsoup_rules>
+
+  <rule name="nom">
+    <pre type="OpenTag" tag="DIV"/>
+    <pre type="OpenTag" tag="SPAN"/>
+    <pre type="OpenTag" tag="IMG" attribute="src" value="http://www.filmaffinity.com/images/movie.gif"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="nomoriginal">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="TÍTULO ORIGINAL"/>
+     <pre type="OpenTag" tag="TD"/>
+    <pre type="OpenTag" tag="STRONG"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="año">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="AÑO"/>
+    <pre type="OpenTag" tag="TD"/>
+    <get type="Text"/>
+  </rule>
+  
+  <rule name="año">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="AÑO"/>
+    <pre type="OpenTag" tag="TD"/>
+    <pre type="CloseTag" tag="DIV"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="duracion">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="DURACIÓN"/>
+    <pre type="OpenTag" tag="TD"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="duracion">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="DURACIÓN"/>
+    <pre type="OpenTag" tag="TD"/>
+    <pre type="CloseTag" tag="DIV"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="director">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="DIRECTOR"/>
+    <pre type="OpenTag" tag="TD"/>
+    <pre type="OpenTag" tag="A"/>
+    <get type="Text"/>
+  </rule>
+
+
+  <rule name="reparto">
+    <pre type="OpenTag" tag="A" attribute="href" value="stype=cast" modeContains="1"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="genero">
+    <pre type="OpenTag" tag="A" attribute="href" value="moviegenre.php?" modeContains="1"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="topic">
+    <pre type="OpenTag" tag="A" attribute="href" value="movietopic.php?" modeContains="1"/>
+    <get type="Text"/>
+  </rule>
+
+  <rule name="imatge">
+    <pre type="OpenTag" tag="A" attribute="class" value="lightbox" getAttribute="href"/>
+  </rule>
+
+  <rule name="sinopsis">
+    <pre type="OpenTag" tag="TH"/>
+    <pre type="Text" tag="SINOPSIS"/>
+    <pre type="OpenTag" tag="TD"/>
+    <get type="Text"/>
+  </rule>
+  
+  <rule name="nota">
+    <pre type="OpenTag" tag="DIV" attribute="style" value="color:#990000; font-size:22px;" modeContains="1"/>
+    <get type="Text"/>
+  </rule>
+  
+</jsoup_rules>
