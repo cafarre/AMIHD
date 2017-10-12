@@ -26,7 +26,7 @@ public class ProcesCoherenciaBDToDiscDurs {
 	
 	public static void main(String[] args) {
 		
-		log.info("INICI - Proc�s de cerca de ubicacions de pelicules BBDD.");
+		log.info("INICI - Procés de cerca de ubicacions de pelicules BBDD.");
 		long init = System.currentTimeMillis();
 		
 		try {
@@ -36,25 +36,25 @@ public class ProcesCoherenciaBDToDiscDurs {
 			//proc.processar("F:///Pelicules HD", 1, false);
 			
 			//2:VIDEOTECA HD 2
-			//proc.processar("G://Pelicules HD", 2,false);
+			//proc.processar("E://Pelicules HD", 2,false);
 			
 			//3:HDTECA NENS
-			proc.processar("E://PeliculesHD", 3, false);
+			//proc.processar("E://PeliculesHD", 3, false);
 			
 			//4:HD WD TEMPORAL 1
-			//proc.processar("E://Pelicules HD", 4, false);
+			proc.processar("F://Pelicules HD", 4, false);
 			
 			//99:HD INCOMING TORRENT
 			//proc.processar("C://Server Media//Incoming Torrents", 99,false);
-			//proc.processar("C://Server Media//Pelicules HD//Per passar a HD Teca n�2", 99);
+			//proc.processar("C://Server Media//Pelicules HD//Per passar a HD Teca nº2", 99);
 			
 			
 			long fin = System.currentTimeMillis();
 			long temps = fin - init;
 			
-			log.info("FI - Proc�s de cerca de ubicacions de pelicules BBDD amb " + temps + "ms.");			
+			log.info("FI - Procés de cerca de ubicacions de pelicules BBDD amb " + temps + "ms.");			
 		} catch(Exception ex) {
-			log.error("ERROR en el proc�s.", ex);
+			log.error("ERROR en el procés.", ex);
 		}
 	}
 	
@@ -94,12 +94,12 @@ public class ProcesCoherenciaBDToDiscDurs {
 
 						boolean ferUpdate=false;
 						
-						//CAS video no ubicat mai o b� ubicat en un altre disc dur menys prioritari (com mes petit id disc dur mes prioritari)
+						//CAS video no ubicat mai o bé ubicat en un altre disc dur menys prioritari (com mes petit id disc dur mes prioritari)
 						if(video.getCodiDiscDur()==null || codiDiscDurBD < video.getCodiDiscDur()
 								|| (forceAsinacio && codiDiscDurBD > video.getCodiDiscDur())) {
 							ferUpdate=true;
 							
-							//Estableix ubicaci�
+							//Estableix ubicació
 							video.setCodiDiscDur(codiDiscDurBD);
 							video.setNomCarpeta(carpetaActual);
 							
@@ -116,7 +116,7 @@ public class ProcesCoherenciaBDToDiscDurs {
 						}
 						//Cas mateix disc dur
 						else if(video.getCodiDiscDur().equals(codiDiscDurBD)) {
-							log.debug("El fitxer " + video.getNomFitxer() + " ja est� ubicat a aquest mateix disc dur.");
+							log.debug("El fitxer " + video.getNomFitxer() + " ja està ubicat a aquest mateix disc dur.");
 
 							//Actualitza la carpeta per actualitzar els casos en que carpeta no informada o canvis de carpeta
 							if(!carpetaActual.equalsIgnoreCase(video.getNomCarpeta())) {
@@ -131,7 +131,7 @@ public class ProcesCoherenciaBDToDiscDurs {
 							}
 						}
 						else {
-							log.warn("El fitxer " + video.getNomFitxer() + " ja est� ubicat a un altre lloc: " + video.getCodiDiscDur());
+							log.warn("El fitxer " + video.getNomFitxer() + " ja està ubicat a un altre lloc: " + video.getCodiDiscDur());
 						}
 
 						if(ferUpdate) {
