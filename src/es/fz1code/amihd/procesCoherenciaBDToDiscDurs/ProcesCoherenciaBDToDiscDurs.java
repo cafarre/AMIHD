@@ -30,23 +30,26 @@ public class ProcesCoherenciaBDToDiscDurs {
 		long init = System.currentTimeMillis();
 		
 		try {
-			ProcesCoherenciaBDToDiscDurs proc  = new ProcesCoherenciaBDToDiscDurs();
-
 			//1:VIDEOTECA HD 1
-			//proc.processar("F:///Pelicules HD", 1, false);
+			ProcesCoherenciaBDToDiscDurs proc  = new ProcesCoherenciaBDToDiscDurs();
+			proc.processar("E:///Pelicules HD", 1, false);
 			
 			//2:VIDEOTECA HD 2
-			//proc.processar("E://Pelicules HD", 2,false);
+			proc  = new ProcesCoherenciaBDToDiscDurs();
+			proc.processar("F://Pelicules HD", 2,false);
 			
 			//3:HDTECA NENS
-			//proc.processar("E://PeliculesHD", 3, false);
+			proc  = new ProcesCoherenciaBDToDiscDurs();
+			proc.processar("G://PeliculesHD", 3, false);
 			
 			//4:HD WD TEMPORAL 1
-			proc.processar("F://Pelicules HD", 4, false);
+			//proc  = new ProcesCoherenciaBDToDiscDurs();
+			//proc.processar("H://Pelicules HD", 4, false);
 			
 			//99:HD INCOMING TORRENT
-			//proc.processar("C://Server Media//Incoming Torrents", 99,false);
-			//proc.processar("C://Server Media//Pelicules HD//Per passar a HD Teca nº2", 99);
+			proc  = new ProcesCoherenciaBDToDiscDurs();
+			proc.processar("D://Server Media//Incoming Torrents", 99,false);
+			//proc.processar("D://Server Media//Pelicules HD//Per passar a HD Teca nº2", 99);
 			
 			
 			long fin = System.currentTimeMillis();
