@@ -41,13 +41,13 @@ public class FAToJavaJsoup extends FAtoJava {
 //		elem = doc.select("DIV > SPAN:has(IMG[src=http://www.filmaffinity.com/images/movie.gif])").first();
 //		info.setNom(elem.ownText());
 //		
-//		elem = taula.select("TH:contains(TÍTULO ORIGINAL) + TD > STRONG").first();
+//		elem = taula.select("TH:contains(Tï¿½TULO ORIGINAL) + TD > STRONG").first();
 //		info.setNomOriginal(elem.ownText());
 //		
-//		elem = taula.select("TH:contains(AÑO) + TD").first();
+//		elem = taula.select("TH:contains(Aï¿½O) + TD").first();
 //		info.setAnyo(elem.ownText());
 //
-//		elem = taula.select("TH:contains(DURACIÓN) + TD").first();
+//		elem = taula.select("TH:contains(DURACIï¿½N) + TD").first();
 //		info.setDuracio(elem.ownText());
 //		
 //		elem = taula.select("TH:contains(DIRECTOR) + TD > A").first();
@@ -101,19 +101,19 @@ public class FAToJavaJsoup extends FAtoJava {
 		elem = doc.select("h1[id=main-title] > span[itemprop=name]").first();
 		info.setNom(elem.ownText());
 		
-		elem = taula.select("DT:contains(TÍTULO ORIGINAL) + DD").first();
+		elem = taula.select("DT:contains(TÃTULO ORIGINAL) + DD").first();
 		info.setNomOriginal(elem.ownText());
 		
-		elem = taula.select("DT:contains(AÑO) + DD").first();
+		elem = taula.select("DT:contains(AÃ‘O) + DD").first();
 		info.setAnyo(elem.ownText());
 
-		elem = taula.select("DT:contains(DURACIÓN) + DD").first();
+		elem = taula.select("DT:contains(DURACIÃ“N) + DD").first();
 		if(elem!=null) {
 			info.setDuracio(elem.ownText());
 		}
 		
 		//elem = taula.select("DT:contains(DIRECTOR) + DD > A").first();
-		elem = taula.select("DD[class=directors] > span > a > span[itemprop=name]").first();
+		elem = taula.select("DD[class=directors] > div > span > a > span[itemprop=name]").first();
 		info.setDirector(elem.ownText());
 		
 		//elems = taula.select("DT:contains(REPARTO) + DD > A");

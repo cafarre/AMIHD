@@ -30,49 +30,52 @@ public class ProcesMKVToHDBD {
 		}
 		
 		long init = System.currentTimeMillis();
-		log.info("INICI - Procés de carrega de pelicules a la BBDD.");
+		log.info("INICI - ProcÃ©s de carrega de pelicules a la BBDD.");
 		try {
 			
 			ProcesMKVToHDBD proc  = new ProcesMKVToHDBD();
 			proc.processar(args[0]);
+			//proc.processar("E://Pelicules HD");
+			//proc.processar("F://Pelicules HD");
+			//proc.processar("G://PeliculesHD");
 			
 			long fin = System.currentTimeMillis();
 			long temps = fin - init;
 			
-			log.info("FI - Procés de carrega de pelicules a la BBDD amb " + temps + "ms.");			
+			log.info("FI - Procï¿½s de carrega de pelicules a la BBDD amb " + temps + "ms.");			
 		} catch(Exception ex) {
-			log.error("ERROR en el procés.", ex);
+			log.error("ERROR en el procï¿½s.", ex);
 		}
 	}
 	
 	private void processar(String ruta) {
+		log.info("Tractant RUTA: " + ruta);
+
+		
 		/*
 		 * - Conectar a la carpeta Incoming Torrents
 		 * - Per cada fitxer mkv, avi o mp4:
 		 * -- Conectar a la BBDD HD 
 		 * -- Buscar si ja hi ha un video que tingui aquell nom de fitxer (noms fitxer en taula apart!)
 		 * -- Si no hi es Crear el video amb: ID i nom fitxer
-		 * -- En cas de algun error grabar la traça amb tota la info posible en una nova taula de logs
+		 * -- En cas de algun error grabar la traï¿½a amb tota la info posible en una nova taula de logs
 		 * 
 		 * - (Opcional) 
 		 * - Recorrer els videos que nomes tenen el nom del fitxer i:
 		 * -- Cercar en FA quines pelis podrien ser
 		 * -- Guardar cada resultat de la cerca amb les url de les pelis de FA
-		 * -- Fer una pantalla per poder informar i validar manualment les url de FA obtingudes oposarla a mà
+		 * -- Fer una pantalla per poder informar i validar manualment les url de FA obtingudes oposarla a mï¿½
 		 *  
 		 */
 		try {
 			//TODO: parametrotzar
 			List<File> listFileVideos = FileVideos.obtenirVideosCarpeta(ruta);
 			
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/Videoteca_1/Videoteca HD Nº1");
+			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/Videoteca_1/Videoteca HD Nï¿½1");
 			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Pendents de Veure");
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Videoteca HD nº2");
+			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Videoteca HD nï¿½2");
 			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Per Determinar si Borrar");
 
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("G://Videoteca HD Nº1");
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("F://Pelicules");
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("D://Pelicules");
 			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("D://Incoming Torrents");
 
 			int numVideos = 0;
@@ -83,7 +86,6 @@ public class ProcesMKVToHDBD {
 					/*String nomPeli = getNomVideo(fileVideo);
 					log.info("NOM PELICULA: " + nomPeli);
 					*/
-					
 					
 					//Obtenir les pelicules pendents de descargar info de FA
 					Video nouVideo = new Video();

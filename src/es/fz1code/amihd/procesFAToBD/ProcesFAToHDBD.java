@@ -24,7 +24,7 @@ public class ProcesFAToHDBD {
 	
 	public static void main(String[] args) {
 		
-		log.info("INICI - Procés de descarrega d'informació de FA.");
+		log.info("INICI - ProcÃ©s de descarrega d'informaciÃ³ de FA.");
 		long init = System.currentTimeMillis();
 		
 		try {
@@ -34,9 +34,9 @@ public class ProcesFAToHDBD {
 			long fin = System.currentTimeMillis();
 			long temps = fin - init;
 			
-			log.info("FI - Procés de descarrega d'informació de FA amb " + temps + "ms.");			
+			log.info("FI - ProcÃ©s de descarrega d'informaciÃ³ de FA amb " + temps + "ms.");			
 		} catch(Exception ex) {
-			log.error("ERROR en el procés.", ex);
+			log.error("ERROR en el procÃ©s.", ex);
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class ProcesFAToHDBD {
 		 * v--- Actualitzar el bean amb la nova ruta de la IMG
 		 * 
 		 * v-- Actualitzar la info de FA a BBDD 
-		 * -- En cas de algun error grabar la traça amb tota la info posible en una nova taula de logs
+		 * -- En cas de algun error grabar la traï¿½a amb tota la info posible en una nova taula de logs
 		 *  
 		 */
 		try {
