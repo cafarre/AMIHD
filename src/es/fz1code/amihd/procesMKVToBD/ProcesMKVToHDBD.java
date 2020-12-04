@@ -34,17 +34,16 @@ public class ProcesMKVToHDBD {
 		try {
 			
 			ProcesMKVToHDBD proc  = new ProcesMKVToHDBD();
-			proc.processar(args[0]);
-			//proc.processar("E://Pelicules HD");
-			//proc.processar("F://Pelicules HD");
-			//proc.processar("G://PeliculesHD");
+			for(String ruta : args) {
+				proc.processar(ruta);
+			}
 			
 			long fin = System.currentTimeMillis();
 			long temps = fin - init;
 			
-			log.info("FI - Proc�s de carrega de pelicules a la BBDD amb " + temps + "ms.");			
+			log.info("FI - Procés de carrega de pelicules a la BBDD amb " + temps + "ms.");			
 		} catch(Exception ex) {
-			log.error("ERROR en el proc�s.", ex);
+			log.error("ERROR en el procés.", ex);
 		}
 	}
 	
@@ -68,16 +67,9 @@ public class ProcesMKVToHDBD {
 		 *  
 		 */
 		try {
-			//TODO: parametrotzar
-			List<File> listFileVideos = FileVideos.obtenirVideosCarpeta(ruta);
+			log.info("---- Tractant RUTA: " + ruta + " ----");
 			
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/Videoteca_1/Videoteca HD N�1");
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Pendents de Veure");
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Videoteca HD n�2");
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("//192.168.2.101/hdteca_v2/Pelicules HD/Per Determinar si Borrar");
-
-			//List<File> listFileVideos = FileVideos.obtenirVideosCarpeta("D://Incoming Torrents");
-
+			List<File> listFileVideos = FileVideos.obtenirVideosCarpeta(ruta);
 			int numVideos = 0;
 			if(listFileVideos!=null) {
 				for(File fileVideo : listFileVideos) {

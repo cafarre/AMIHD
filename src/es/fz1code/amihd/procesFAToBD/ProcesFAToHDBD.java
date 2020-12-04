@@ -95,7 +95,7 @@ public class ProcesFAToHDBD {
 	
 	private void tractaVideo(Video vid) throws Exception{
 		try {
-			log.info("INICI - Descarga info pelicula: " + vid.getUrlFA());
+			log.info("INICI - Descarga info pelicula " + vid.getNomFitxer() + ": " + vid.getUrlFA());
 			long init = System.currentTimeMillis();
 			
 			InfoPeliFA info = lector.obtenirVideo(vid.getUrlFA());
