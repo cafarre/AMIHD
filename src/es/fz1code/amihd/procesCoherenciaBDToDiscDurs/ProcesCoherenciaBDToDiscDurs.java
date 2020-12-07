@@ -35,19 +35,19 @@ public class ProcesCoherenciaBDToDiscDurs {
 			
 			//1:VIDEOTECA HD 1
 			ProcesCoherenciaBDToDiscDurs proc  = new ProcesCoherenciaBDToDiscDurs();
-			resultats.add(proc.processarDisc("H:///PeliculesHD", 1, true, true));
+			resultats.add(proc.processarDisc("H:/PeliculesHD", 1, true, true));
 			
 			//2:HD Pendents
 			proc = new ProcesCoherenciaBDToDiscDurs();
-			resultats.add(proc.processarDisc("F://Pelicules HD", 2, false, true));
+			resultats.add(proc.processarDisc("F:/Pelicules HD", 2, false, true));
 			
 			//3:HD Temporal
 			proc = new ProcesCoherenciaBDToDiscDurs();
-			resultats.add(proc.processarDisc("I://Pelicules HD", 3, false, true));
+			resultats.add(proc.processarDisc("I:/Pelicules HD", 3, false, true));
 			
 			//99:HD INCOMING TORRENT
 			proc = new ProcesCoherenciaBDToDiscDurs();
-			resultats.add(proc.processarDisc("D://Server Media//Incoming Torrents", 99, false, false));
+			resultats.add(proc.processarDisc("D:/Server Media/Incoming Torrents", 99, false, false));
 			
 			//VIDEOS NO UBICATS NI ELIMINATS
 			proc = new ProcesCoherenciaBDToDiscDurs();
@@ -107,7 +107,6 @@ public class ProcesCoherenciaBDToDiscDurs {
 		sb.append("*").append(strF(" CODI HD                : " + res.codiDiscDur)).append("*\n");
 		sb.append("*").append(strF(" FORCE ASSIGN           : " + res.forceAssignacio)).append("*\n");
 		sb.append("*").append(strF(" POSAR FOTO             : " + res.posarFoto)).append("*\n");
-		sb.append("*").append(strF(" POSAR FOTO             : " + res.posarFoto)).append("*\n");
 		sb.append("*").append(strF(" NºVIDEOS BBDD EN HD    : " + res.numVideosBBDD)).append("*\n");
 		sb.append("*").append(strF(" NºVIDEOS DISC          : " + res.numVideosDisc)).append("*\n");
 		sb.append("*").append(strF(" NºVIDEOS MATCH DISC-BD : " + res.numVideosMatch)).append("*\n");
@@ -148,8 +147,8 @@ public class ProcesCoherenciaBDToDiscDurs {
 			
 			if(listVideos != null) {
 				for(Video video : listVideos) {
-					if(video.getCodiEstat().intValue() < 7 && video.getCodiDiscDur()==null) {
-						log.warn("El video " + video.getNomFitxer() + " NO está ubicat a cap disc dur i NO consta com ELIMINAT.");
+					if(video.getCodiEstat().intValue() < 7 && video.getCodiEstat().intValue() > 2 && video.getCodiDiscDur()==null) {
+						log.warn("El video " + video.getNomFitxer() + " NO está ubicat a cap disc dur i NO consta com ELIMINAT ni PDT DESCARREGAR.");
 						count++;
 					}
 				}

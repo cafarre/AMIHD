@@ -3,6 +3,7 @@ package es.fz1code.amihd.procesFAToBD;
 import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -117,9 +118,14 @@ public class FAToJavaJsoup extends FAtoJava {
 		info.setDirector(elem.ownText());
 		
 		//elems = taula.select("DT:contains(REPARTO) + DD > A");
-		elems = taula.select("DT:contains(REPARTO) + DD > span > a > span[itemprop=name]");
+		elems = taula.select("DD[class=card-cast] > div > span > a > span[itemprop=name]");
 		List<String> repart = elementsToList(elems);
-		info.setRepart(repart);
+		if(repart==null) { 
+			info.setRepart(Arrays.asList("-"));
+		}
+		else {
+			info.setRepart(repart);
+		}
 
 		elems = taula.select("A[href*=moviegenre.php?]");
 		List<String> generes = elementsToList(elems);
